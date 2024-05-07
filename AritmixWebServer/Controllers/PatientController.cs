@@ -4,12 +4,37 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+
+
 namespace AritmixWebServer.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class PatientsController : ControllerBase
     {
+
+        public static string GenerateRandomId()
+        {
+            // Define the length of the ID
+            int length = 8;
+
+            // Characters allowed in the ID
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            // Random number generator
+            Random random = new Random();
+
+            // Generate a random ID
+            char[] id = new char[length];
+            for (int i = 0; i < length; i++)
+            {
+                id[i] = chars[random.Next(chars.Length)];
+            }
+
+            return new string(id);
+        }
+
         private static List<Patient> _patients = new List<Patient>
         {
    new Patient
@@ -20,9 +45,21 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 1,
-                AppointmentDate = DateTime.Now.AddDays(1),
+                Id = GenerateRandomId(),
+                AppointmentDate = DateTime.Now.AddDays(4),
                 AppointmentType = new AppointmentType { name = "Initial Consultation" }
+            },
+                 new Appointment
+            {
+                Id = GenerateRandomId(),
+                AppointmentDate = DateTime.Now.AddDays(1),
+                AppointmentType = new AppointmentType { name = "Follow Up" }
+            },
+            new Appointment
+            {
+                Id = GenerateRandomId(),
+                AppointmentDate = DateTime.Now.AddDays(14),
+                AppointmentType = new AppointmentType { name = "US" }
             }
         }
     },
@@ -34,7 +71,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 2,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(2),
                 AppointmentType = new AppointmentType { name = "Follow-up Appointment" }
             }
@@ -48,13 +85,18 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 3,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(3),
                 AppointmentType = new AppointmentType { name = "Diagnostic Testing" }
+            },
+            new Appointment
+            {
+                Id = GenerateRandomId(),
+                AppointmentDate = DateTime.Now.AddDays(1),
+                AppointmentType = new AppointmentType { name = "Follow-up Appointment" }
             }
         }
     },
-    // Add more patients here...
     new Patient
     {
         Id = 4,
@@ -63,9 +105,15 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 4,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(4),
                 AppointmentType = new AppointmentType { name = "Regular Checkup" }
+            },
+            new Appointment
+            {
+                Id = GenerateRandomId(),
+                AppointmentDate = DateTime.Now.AddDays(10),
+                AppointmentType = new AppointmentType { name = "CT" }
             }
         }
     },
@@ -83,7 +131,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 5,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(5),
                 AppointmentType = new AppointmentType { name = "Dental Cleaning" }
             }
@@ -97,7 +145,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 6,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(6),
                 AppointmentType = new AppointmentType { name = "Eye Checkup" }
             }
@@ -117,7 +165,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 7,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(7),
                 AppointmentType = new AppointmentType { name = "Physical Therapy" }
             }
@@ -137,7 +185,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 8,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(8),
                 AppointmentType = new AppointmentType { name = "Ultrasound" }
             }
@@ -157,7 +205,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 9,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(9),
                 AppointmentType = new AppointmentType { name = "X-ray" }
             }
@@ -177,7 +225,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 10,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(10),
                 AppointmentType = new AppointmentType { name = "Blood Test" }
             }
@@ -197,7 +245,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 11,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(11),
                 AppointmentType = new AppointmentType { name = "MRI Scan" }
             }
@@ -217,7 +265,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 12,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(12),
                 AppointmentType = new AppointmentType { name = "EKG" }
             }
@@ -237,7 +285,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 13,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(13),
                 AppointmentType = new AppointmentType { name = "CT Scan" }
             }
@@ -257,7 +305,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 14,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(14),
                 AppointmentType = new AppointmentType { name = "Physical Exam" }
             }
@@ -277,7 +325,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 15,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(15),
                 AppointmentType = new AppointmentType { name = "Allergy Testing" }
             }
@@ -297,7 +345,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 16,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(16),
                 AppointmentType = new AppointmentType { name = "Dermatology Consultation" }
             }
@@ -317,7 +365,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 17,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(17),
                 AppointmentType = new AppointmentType { name = "Endoscopy" }
             }
@@ -337,7 +385,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 18,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(18),
                 AppointmentType = new AppointmentType { name = "Podiatry Evaluation" }
             }
@@ -357,7 +405,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 19,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(19),
                 AppointmentType = new AppointmentType { name = "Psychiatry Consultation" }
             }
@@ -377,8 +425,14 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 20,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(20),
+                AppointmentType = new AppointmentType { name = "Neurology Evaluation" }
+            },
+            new Appointment
+            {
+                Id = GenerateRandomId(),
+                AppointmentDate = DateTime.Now.AddHours(1),
                 AppointmentType = new AppointmentType { name = "Neurology Evaluation" }
             }
         }
@@ -397,7 +451,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 21,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(21),
                 AppointmentType = new AppointmentType { name = "Nutrition Counseling" }
             }
@@ -417,7 +471,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 22,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(22),
                 AppointmentType = new AppointmentType { name = "Orthopedic Consultation" }
             }
@@ -437,7 +491,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 23,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(23),
                 AppointmentType = new AppointmentType { name = "Pulmonary Function Test" }
             }
@@ -457,7 +511,7 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 24,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(24),
                 AppointmentType = new AppointmentType { name = "Rheumatology Consultation" }
             }
@@ -477,12 +531,12 @@ namespace AritmixWebServer.Controllers
         {
             new Appointment
             {
-                Id = 25,
+                Id = GenerateRandomId(),
                 AppointmentDate = DateTime.Now.AddDays(25),
                 AppointmentType = new AppointmentType { name = "Sleep Study" }
             }
         }
-    },
+    }
         };
 
         [HttpGet]
